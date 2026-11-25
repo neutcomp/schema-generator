@@ -18,7 +18,7 @@ jobs:
         timeout: 60000
         protocol: ftps
         local-dir: ./
-        server-dir: ./httpdocs/schema-generator
+        server-dir: ./httpdocs/schema-generator/
         exclude: |
           **/.git
           **/.git/**
