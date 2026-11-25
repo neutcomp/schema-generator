@@ -1,0 +1,11 @@
+# Dependencies and temporary test output
+node_modules/
+.playwright-mcp/
+*.log
+
+# Local data exports can contain personal information
+pepernotentoernooi-gegevens*.json
+
+# Operating system files
+Thumbs.db
+.DS_Store

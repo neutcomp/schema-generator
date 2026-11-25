@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Pepernotentoernooi | Schedule Generator</title>
+  <link rel="stylesheet" href="styles.css">
+  <script defer src="scheduler.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="hero">
+      <div>
+        <p class="eyebrow">HET GEZELLIGE</p>
+        <h1>Pepernotentoernooi</h1>
+        <p class="hero-description">Veel lol en gezelligheid</p>
+      </div>
+      <div class="hero-mark" aria-hidden="true"><span>✳</span><small>PANNENKOEKEN<br>EN PEPERNOTEN</small></div>
+    </header>
+
+    <main>
+      <div class="intro">
+        <div>
+          <h2>Schema generator</h2>
+          <p>Voeg je spelers en spellen toe, en laat de planning aan ons over.</p>
+        </div>
+        <p class="save-note"><span aria-hidden="true">●</span> <span id="save-status" role="status">Opgeslagen op dit apparaat</span></p>
+      </div>
+
+      <div class="setup-grid">
+        <section class="card players-card" aria-labelledby="players-heading">
+          <div class="card-heading">
+            <div><p class="step">01 / DE SPELERS</p><h3 id="players-heading">Wie doet er mee?</h3></div>
+            <span class="count" id="player-count">0 spelers</span>
+          </div>
+          <p class="hint">Voeg iedereen toe die meedoet, inclusief hun leeftijd en vaardigheidsniveau.</p>
+          <div id="players-list" class="entries"></div>
+          <button class="add-button" id="add-player" type="button"><span>＋</span> Voeg speler toe</button>
+        </section>
+
+        <div class="right-column">
+          <section class="card" aria-labelledby="games-heading">
+            <div class="card-heading">
+              <div><p class="step">02 / DE SPELLEN</p><h3 id="games-heading">Wat spelen we?</h3></div>
+              <span class="count" id="game-count">0 spellen</span>
+            </div>
+            <p class="hint">Elk spel heeft per ronde één groep kids.</p>
+            <div id="games-list" class="entries"></div>
+            <button class="add-button" id="add-game" type="button"><span>＋</span> Voeg spel toe</button>
+          </section>
+
+          <section class="card rounds-card" aria-labelledby="rounds-heading">
+            <p class="step">03 / DE RONDES</p>
+            <h3 id="rounds-heading">Hoeveel rondes?</h3>
+            <div class="rounds-row">
+              <p class="hint">Meer rondes betekenen meer kansen om te variëren.</p>
+              <label class="sr-only" for="rounds">Aantal rondes</label>
+              <input id="rounds" type="number" min="1" max="100" step="1" inputmode="numeric">
+            </div>
+            <div class="round-time">
+              <div class="rounds-row">
+                <label for="round-time">Tijd per ronde (minuten, optioneel)</label>
+                <input id="round-time" type="number" min="1" step="1" inputmode="numeric" placeholder="Minuten">
+              </div>
+              <p class="total-time">Totale tijd: <output id="total-time" for="rounds round-time">Voer een tijd per ronde in</output></p>
+            </div>
+          </section>
+          <section class="card transfer-card" aria-labelledby="transfer-heading">
+            <p class="step">04 / GEGEVENS</p>
+            <h3 id="transfer-heading">Gegevens meenemen</h3>
+            <p class="hint">Bewaar een bestand als back-up of zet je gegevens over naar een andere browser of computer.</p>
+            <div class="transfer-actions">
+              <button id="export-data" type="button">Exporteer gegevens</button>
+              <button id="import-data" type="button">Importeer gegevens</button>
+              <input id="import-file" type="file" accept=".json,application/json" hidden>
+            </div>
+            <p id="transfer-status" class="transfer-status" role="status" aria-live="polite"></p>
+          </section>
+          <button class="generate-button" id="generate" type="button">Genereer schema <span aria-hidden="true">↗</span></button>
+          <p class="privacy-note">Je wijzigingen worden in deze browser op dit apparaat opgeslagen.</p>
+        </div>
+      </div>
+      <div id="error" class="message error" role="alert" hidden></div>
+
+            <section id="results" class="results" aria-labelledby="results-heading" hidden>
+              <div class="results-heading">
+                <div><h2 id="results-heading">Je schema</h2><p id="results-summary"></p></div>
+                <button class="print-button" id="print" type="button">Print schema <span aria-hidden="true">↗</span></button>
+              </div>
+              <p class="results-note">Spellen met vier spelers worden als groep weergegeven, zonder teams.</p>
+              <p id="coverage-warning" class="coverage-warning" role="status" hidden></p>
+              <div id="schedule" class="schedule-grid"></div>
+            </section>
+            
+    </main>
+  </div>
+</body>
+</html>
